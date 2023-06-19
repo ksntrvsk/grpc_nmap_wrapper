@@ -97,6 +97,7 @@ func (server *GRPCServer) CheckVuln(ctx context.Context, req *pb.CheckVulnReques
 		}
 		checkVulnResponse.Results = append(checkVulnResponse.Results, &targetResult)
 	}
+	fmt.Println("AAA", &checkVulnResponse)
 	return &checkVulnResponse, nil
 }
 
