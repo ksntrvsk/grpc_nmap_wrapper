@@ -8,7 +8,7 @@ Before you can run the application, you must install it:
 
 Creating a binary file and running the application:
 ```golang
-make buid
+make build
 ```
 To run the client: 
 ```golang
