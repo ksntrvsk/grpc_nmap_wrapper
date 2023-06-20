@@ -3,13 +3,13 @@ package server
 import (
 	"context"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"time"
 
 	"github.com/Ullaakut/nmap/v3"
 	"github.com/ksntrvsk/grpc_nmap_wrapper/api/pb"
+	log "github.com/sirupsen/logrus"
 )
 
 type GRPCServer struct {
@@ -97,7 +97,6 @@ func (server *GRPCServer) CheckVuln(ctx context.Context, req *pb.CheckVulnReques
 		}
 		checkVulnResponse.Results = append(checkVulnResponse.Results, &targetResult)
 	}
-	fmt.Println("AAA", &checkVulnResponse)
 	return &checkVulnResponse, nil
 }
 

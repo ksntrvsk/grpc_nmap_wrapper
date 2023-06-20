@@ -3,10 +3,10 @@ package server
 import (
 	"context"
 	"fmt"
-	"log"
 	"testing"
 
 	"github.com/ksntrvsk/grpc_nmap_wrapper/api/pb"
+	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc"
 )
