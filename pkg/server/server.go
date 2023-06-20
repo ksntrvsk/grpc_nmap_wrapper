@@ -12,10 +12,12 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Types
 type GRPCServer struct {
 	pb.UnimplementedNetVulnServiceServer
 }
 
+// Public methods
 func (server *GRPCServer) CheckVuln(ctx context.Context, req *pb.CheckVulnRequest) (*pb.CheckVulnResponse, error) {
 
 	// Constants
@@ -100,6 +102,7 @@ func (server *GRPCServer) CheckVuln(ctx context.Context, req *pb.CheckVulnReques
 	return &checkVulnResponse, nil
 }
 
+// Internal methods
 func targets(trgt []string) []string {
 	var targets []string
 

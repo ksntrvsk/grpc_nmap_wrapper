@@ -7,6 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Types
 type Config struct {
 	Server struct {
 		Host string `yml:"host"`
@@ -17,30 +18,22 @@ type Config struct {
 	} `yml:"logger"`
 }
 
+// Constants
+const path = "config.yml"
+
+// Variables
 var instance *Config
 var once sync.Once
 
+// Public methods
 func NewCongif() (*Config, error) {
 	once.Do(func() {
 		instance = &Config{}
-		if err := cleanenv.ReadConfig("config.yml", instance); err != nil {
+		if err := cleanenv.ReadConfig(path, instance); err != nil {
 			errDesc, _ := cleanenv.GetDescription(instance, nil)
 			log.Fatal(errDesc)
 		}
 	})
-
-	// Create config file without library
-
-	// file, err := os.Open("config.yml")
-	// if err != nil {
-	// 	return nil, fmt.Errorf("unable to open config file: %v", err)
-	// }
-	// defer file.Close()
-
-	// decoder := yaml.NewDecoder(file)
-	// if err := decoder.Decode(instance); err != nil {
-	// 	return nil, fmt.Errorf("unable to decode config file: %v", err)
-	// }
 
 	return instance, nil
 }

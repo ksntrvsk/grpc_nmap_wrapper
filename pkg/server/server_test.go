@@ -13,6 +13,7 @@ import (
 
 func TestCheckVuln(test *testing.T) {
 
+	// Test data
 	checkVulnResponse := pb.CheckVulnResponse{
 		Results: make([]*pb.TargetResult, 0),
 	}
@@ -151,10 +152,12 @@ func TestCheckVuln(test *testing.T) {
 
 	expected := &checkVulnResponse
 
+	// Calling the code under test
 	response, err := client.CheckVuln(context.Background(), &request)
 	if err != nil {
 		log.Fatalf("Error when calling CheckVuln: %s", err)
 	}
 
+	// Checking results
 	assert.Equal(test, expected, response, fmt.Sprintf("Incorrect result. Expect %s, got %s", expected, response))
 }
